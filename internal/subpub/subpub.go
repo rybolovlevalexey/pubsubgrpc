@@ -1,4 +1,4 @@
-package subpud
+package subpub
 
 import (
 	"context"
@@ -92,4 +92,9 @@ func (s *subPubImpl) Close(ctx context.Context) error {
 	case <-ctx.Done():
 		return ctx.Err()
 	}
+}
+
+
+func (s *subscription) Unsubscribe() {
+	s.unsubscribe()
 }
