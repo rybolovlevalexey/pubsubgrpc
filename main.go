@@ -3,14 +3,13 @@ package main
 import (
     "pubsubgrpc/internal/models"
 
-    "pubsubgrpc/internal/config"
-    "pubsubgrpc/internal/logger"
+    "pubsubgrpc/internal/core"
     "pubsubgrpc/internal/grpcserver"
 )
 
 func main() {
-    cfg := config.Load()
-    log := logger.New()
+    cfg := core.LoadConfig()
+    log := core.NewLogger()
     serverSettings := models.ServerSettings{
         Cfg: cfg,
         Log: log,

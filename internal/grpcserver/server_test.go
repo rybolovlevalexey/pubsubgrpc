@@ -8,8 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	pb "pubsubgrpc/internal/proto"
 	"google.golang.org/grpc/metadata"
-	"pubsubgrpc/internal/config"
-	"pubsubgrpc/internal/logger"
+	"pubsubgrpc/internal/core"
 	"pubsubgrpc/internal/models"
 )
 
@@ -37,8 +36,8 @@ func (m *mockStream) RecvMsg(interface{}) error       { return nil }
 
 // тесты
 func TestPublishSubscribe(t *testing.T) {
-	cfg := config.Load()
-	log := logger.New()
+	cfg := core.LoadConfig()
+	log := core.NewLogger()
 	serverSettings := models.ServerSettings{Cfg: cfg, Log: log}
 	srv := NewPubSubServer(serverSettings).(*pubSubServer)
 
@@ -66,8 +65,8 @@ func TestPublishSubscribe(t *testing.T) {
 }
 
 func TestSubscribeAndPublishWithContextCancel(t *testing.T) {
-	cfg := config.Load()
-	log := logger.New()
+	cfg := core.LoadConfig()
+	log := core.NewLogger()
 	serverSettings := models.ServerSettings{Cfg: cfg, Log: log}
 	srv := NewPubSubServer(serverSettings).(*pubSubServer)
 

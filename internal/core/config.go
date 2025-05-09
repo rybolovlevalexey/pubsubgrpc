@@ -1,4 +1,4 @@
-package config
+package core
 
 import (
 	"os"
@@ -8,7 +8,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func Load() *models.Config{
+func LoadConfig() *models.Config{
 	godotenv.Load()
 	grpcPort, _ := strconv.Atoi(os.Getenv("PubSubgRPCPort"))
 
