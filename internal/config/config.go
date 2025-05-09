@@ -1,17 +1,19 @@
 package config
 
 import (
+	"os"
 	"pubsubgrpc/internal/models"
-	// "os"
+	"strconv"
 
 	"github.com/joho/godotenv"
 )
 
 func Load() *models.Config{
 	godotenv.Load()
+	grpcPort, _ := strconv.Atoi(os.Getenv("PubSubgRPCPort"))
 
-	config := &models.Config{  // os.Getenv
-
+	config := &models.Config{
+		PubSubgRPCPort: grpcPort,
 	}
 
 	return config

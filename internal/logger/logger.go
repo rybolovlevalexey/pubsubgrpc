@@ -6,5 +6,5 @@ import (
 )
 
 func New() *log.Logger {
-    return log.New(os.Stdout, "[] ", log.LstdFlags)
+    return log.New(os.Stdout, "[PubSub] ", log.LstdFlags)
 }
